@@ -130,7 +130,7 @@ exec --no-startup-id unclutter --timeout 3 --ignore-scrolling
 exec --no-startup-id dropbox start
 exec rstudio
 exec spotify
-exec_always feh --bg-scale ~/Pictures/Wallpapers/27.jpg
+exec_always feh --bg-scale ~/Pictures/Wallpapers/2.jpg
 exec_always compton
 
 for_window [class="Spotify"] move to workspace $workspace10
