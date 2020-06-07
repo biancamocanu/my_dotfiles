@@ -135,6 +135,17 @@ exec_always compton
 
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="Telegram"] move to workspace $workspace9
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -197,8 +208,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls (to fix)
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"
+
+bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
 
 # Media player controls (also work)
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -220,6 +233,10 @@ exec_always xinput set-prop 14 299 1
 #natural scrolling
 
 exec_always xinput set-prop 14 300 1
+exec_always ~/.screenlayout/Home.sh
+
+exec_always xset -dpms
+exec_always xset s off
 
 # Set shut down, restart and locking features
 bindsym $mod+Shift+q mode "$mode_system"
